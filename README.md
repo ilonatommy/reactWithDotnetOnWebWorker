@@ -1,5 +1,7 @@
 # README
 
+Live demo: https://ashy-island-008420303.4.azurestaticapps.net/
+
 ## Setup
 
 ### Linux
