@@ -1,0 +1,54 @@
+{
+  "name": "my-app",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@testing-library/jest-dom": "^5.17.0",
+    "@testing-library/react": "^13.4.0",
+    "@testing-library/user-event": "^13.5.0",
+    "express": "^4.18.2",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-scripts": "5.0.1",
+    "react-spinners": "^0.13.8",
+    "web-vitals": "^2.1.4"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "startWin": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "install:dotnet": "dotnet workload install wasm-tools",
+    "integrate": "rm -rf $PWD/public/qr & cp -r dist/dotnet $PWD/public/qr",
+    "integrateWin": "rmdir %INIT_CWD%\\public\\qr & xcopy dist\\dotnet %INIT_CWD%\\public\\qr",
+    "build:dotnet": "dotnet publish -c Release -p:RunAOTCompilation=true ../dotnet/QRGenerator.csproj",
+    "buildWin:dotnet": "dotnet publish -c Release -p:RunAOTCompilation=true ../dotnet/QRGenerator.csproj",
+    "build:dotnet:debug": "dotnet publish -c Debug ../dotnet/QRGenerator.csproj",
+    "buildWin:dotnet:debug": "dotnet publish -c Debug ../dotnet/QRGenerator.csproj",
+    "build:all:debug": "dotnet publish -c Debug ../dotnet/QRGenerator.csproj & react-scripts build & rm -rf $PWD/public/qr & cp -r dist/dotnet $PWD/public/qr",
+    "buildWin:all:debug": "dotnet publish -c Debug ../dotnet/QRGenerator.csproj & react-scripts build & rmdir %INIT_CWD%\\public\\qr /s /q & xcopy dist\\dotnet %INIT_CWD%\\public\\qr /s /e /i"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "main": "src/index.js",
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}
