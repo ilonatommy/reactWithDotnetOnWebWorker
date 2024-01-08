@@ -30,7 +30,13 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
+      <div className="GitHub-project-info">
+        <p>
+          This demo is available on GitHub:
+          <br />
+          <a href="https://github.com/ilonatommy/reactWithDotnetOnWebWorker">GitHub Project Link</a>
+        </p>
+        </div>
         <div>
           {!exportsReady ? (
           // Display the spinner while exports are not ready

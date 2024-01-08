@@ -5,7 +5,7 @@
     <WasmMainJSPath>main.js</WasmMainJSPath>
     <OutputType>Exe</OutputType>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-    <WasmAppDir>../react/dist/dotnet</WasmAppDir>   
+    <WasmAppDir>../react/dist/dotnet</WasmAppDir>
   </PropertyGroup>
 
   <ItemGroup>
