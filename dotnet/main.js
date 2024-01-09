@@ -22,10 +22,13 @@ export async function setUpWorker() {
             case "generateQRCodeResponse":
                 if (e.data.image === undefined)
                     new Error("Inner error, got empty QR image from worker");
-                let uint8Array = new Uint8Array(e.data.image);
-                let binaryString = Array.from(uint8Array).map(byte => String.fromCharCode(byte)).join('');
-                let base64String = btoa(binaryString);
-                document.getElementById("qrImage").src = `data:image/bmp;base64, ${base64String}`;
+                const blob = new Blob([e.data.image], { type: 'image/png' });
+                const url = URL.createObjectURL(blob);
+                const image = document.getElementById("qrImage");
+                image.onload = () => {
+                    URL.revokeObjectURL(url);
+                  };
+                image.src = url;
             default:
                 console.log('Worker said: ', e.data);
             break;
