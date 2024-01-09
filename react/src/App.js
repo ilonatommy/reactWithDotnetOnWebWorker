@@ -56,9 +56,9 @@ function App() {
               <input type="number" placeholder={initSize} onChange={debouncedSetSize} />
             </p>
             <Popup />
-            <p>
+            <div>
               <QrImage text={text} size={size} id="qrImage"/>
-            </p>
+            </div>
             <p>
               QRCoder from <a href="https://github.com/codebude/QRCoder">https://github.com/codebude/QRCoder</a>
             </p>

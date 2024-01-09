@@ -22,13 +22,8 @@ export async function setUpWorker() {
             case "generateQRCodeResponse":
                 if (e.data.image === undefined)
                     new Error("Inner error, got empty QR image from worker");
-                const blob = new Blob([e.data.image], { type: 'image/png' });
-                const url = URL.createObjectURL(blob);
-                const image = document.getElementById("qrImage");
-                image.onload = () => {
-                    URL.revokeObjectURL(url);
-                  };
-                image.src = url;
+                eventEmitter.emit('generateQRCodeResponse', e.data.image);
+                break;
             default:
                 console.log('Worker said: ', e.data);
             break;
