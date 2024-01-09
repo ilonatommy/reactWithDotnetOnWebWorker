@@ -25,9 +25,9 @@
     "build:dotnet": "dotnet publish -c Release ../dotnet/QRGenerator.csproj",
     "buildWin:dotnet": "dotnet publish -c Release ../dotnet/QRGenerator.csproj",
     "build:dotnet:debug": "dotnet publish -c Debug ../dotnet/QRGenerator.csproj",
-    "buildWin:dotnet:debug": "build:dotnet:debug",
-    "build:all:debug": "build:dotnet:debug & react-scripts build & npm run integrate",
-    "buildWin:all:debug": "buildWin:dotnet:debug & react-scripts build & npm run integrateWin",
+    "buildWin:dotnet:debug": "npm run build:dotnet:debug",
+    "build:all:debug": "npm run build:dotnet:debug & react-scripts build & npm run integrate",
+    "buildWin:all:debug": "npm run buildWin:dotnet:debug & react-scripts build & npm run integrateWin",
     "build:all": "npm run build:dotnet & react-scripts build & npm run integrate",
     "buildWin:all": "npm run buildWin:dotnet & react-scripts build & npm run integrateWin"
   },
