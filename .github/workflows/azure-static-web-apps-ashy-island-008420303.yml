@@ -24,7 +24,7 @@ jobs:
         working-directory: ./react
         run: |
           npm run install:dotnet
-          npm run build:dotnet:debug
+          npm run build:dotnet
 
       - name: Move artifacts
         working-directory: ./react

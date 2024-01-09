@@ -21,13 +21,15 @@
     "eject": "react-scripts eject",
     "install:dotnet": "dotnet workload install wasm-tools",
     "integrate": "rm -rf $PWD/public/qr & cp -r dist/dotnet $PWD/public/qr",
-    "integrateWin": "rmdir %INIT_CWD%\\public\\qr & xcopy dist\\dotnet %INIT_CWD%\\public\\qr",
-    "build:dotnet": "dotnet publish -c Release -p:RunAOTCompilation=true ../dotnet/QRGenerator.csproj",
-    "buildWin:dotnet": "dotnet publish -c Release -p:RunAOTCompilation=true ../dotnet/QRGenerator.csproj",
+    "integrateWin": "rmdir %INIT_CWD%\\public\\qr /s /q & xcopy dist\\dotnet %INIT_CWD%\\public\\qr /s /e /i",
+    "build:dotnet": "dotnet publish -c Release ../dotnet/QRGenerator.csproj",
+    "buildWin:dotnet": "dotnet publish -c Release ../dotnet/QRGenerator.csproj",
     "build:dotnet:debug": "dotnet publish -c Debug ../dotnet/QRGenerator.csproj",
-    "buildWin:dotnet:debug": "dotnet publish -c Debug ../dotnet/QRGenerator.csproj",
-    "build:all:debug": "dotnet publish -c Debug ../dotnet/QRGenerator.csproj & react-scripts build & rm -rf $PWD/public/qr & cp -r dist/dotnet $PWD/public/qr",
-    "buildWin:all:debug": "dotnet publish -c Debug ../dotnet/QRGenerator.csproj & react-scripts build & rmdir %INIT_CWD%\\public\\qr /s /q & xcopy dist\\dotnet %INIT_CWD%\\public\\qr /s /e /i"
+    "buildWin:dotnet:debug": "build:dotnet:debug",
+    "build:all:debug": "build:dotnet:debug & react-scripts build & npm run integrate",
+    "buildWin:all:debug": "buildWin:dotnet:debug & react-scripts build & npm run integrateWin",
+    "build:all": "npm run build:dotnet & react-scripts build & npm run integrate",
+    "buildWin:all": "npm run buildWin:dotnet & react-scripts build & npm run integrateWin"
   },
   "eslintConfig": {
     "extends": [

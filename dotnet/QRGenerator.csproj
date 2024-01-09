@@ -6,6 +6,12 @@
     <OutputType>Exe</OutputType>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <WasmAppDir>../react/dist/dotnet</WasmAppDir>
+    <PublishTrimmed>true</PublishTrimmed>
+    <TrimMode>full</TrimMode>
+    <InvariantGlobalization>true</InvariantGlobalization>
+    <InvariantTimezone>true</InvariantTimezone>
+    <WasmEnableExceptionHandling>false</WasmEnableExceptionHandling>
+    <BlazorWebAssemblyJiterpreter>false</BlazorWebAssemblyJiterpreter>
   </PropertyGroup>
 
   <ItemGroup>
