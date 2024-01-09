@@ -4,7 +4,7 @@ let dotnetWorker = null;
 let exportsReady = false;
 
 export async function setUpWorker() {
-    dotnetWorker = new Worker('./qr/dotnetWorker.js', { type: "module" } );
+    dotnetWorker = new Worker('./qr/wwwroot/dotnetWorker.js', { type: "module" } );
 
     dotnetWorker.addEventListener('message', function(e) {
         switch (e.data.command)

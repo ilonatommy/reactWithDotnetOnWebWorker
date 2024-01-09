@@ -5,7 +5,7 @@
     <WasmMainJSPath>main.js</WasmMainJSPath>
     <OutputType>Exe</OutputType>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-    <WasmAppDir>../react/dist/dotnet</WasmAppDir>
+    <PublishDir>../react/dist/dotnet</PublishDir>
     <PublishTrimmed>true</PublishTrimmed>
     <TrimMode>full</TrimMode>
     <InvariantGlobalization>true</InvariantGlobalization>
@@ -13,11 +13,6 @@
     <WasmEnableExceptionHandling>false</WasmEnableExceptionHandling>
     <BlazorWebAssemblyJiterpreter>false</BlazorWebAssemblyJiterpreter>
   </PropertyGroup>
-
-  <ItemGroup>
-    <WasmExtraFilesToDeploy Include="main.js" />
-    <WasmExtraFilesToDeploy Include="dotnetWorker.js" />
-  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="QRCoder" Version="1.4.3" />

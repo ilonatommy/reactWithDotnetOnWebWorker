@@ -5,7 +5,7 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 
-const mainJsPath = '../../qr/main.js';
+const mainJsPath = '../../qr/wwwroot/main.js';
 const { setUpWorker, launchDotnet, generate, eventEmitter } = await import(/* webpackIgnore: true */mainJsPath);
 await setUpWorker();
 launchDotnet();
