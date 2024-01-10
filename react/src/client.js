@@ -28,7 +28,7 @@ export function setUpWorker() {
                 break;
             default:
                 console.log('Worker said: ', e.data);
-            break;
+                break;
         }
     }, false);
 }
