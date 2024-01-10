@@ -36,7 +36,7 @@ Same as Linux but with `Win` suffix, e.g. `npm run integrateWin`, `buildWin:all:
 
 ## Communication
 
-The React application runs in the main thread, that has access to DOM. It imports functions for launching a .NET runtime on a Web Worker from a WebAssembly (WASM) application (refer to [index.js](master/react/src/index.js) and [main.js](master/react/src/main.js)) and executes them. These functions establish a Web Worker using the [dotnetWorker.js](master/dotnet/dotnetWorker.js) file. Web Worker can perform heavy tasks without blocking the UI, however it does not have direct control over DOM and relies on communication with main thread for changes to UI. Communication between the Web Worker and the main thread occurs through message passing. The demo includes a few simple examples of passing information from dotnet to React frontend and the other way.
+The React application runs in the main thread, that has access to DOM. It imports functions for launching a .NET runtime on a Web Worker from a WebAssembly (WASM) application (refer to [index.js](react/src/index.js) and [main.js](react/src/main.js)) and executes them. These functions establish a Web Worker using the [dotnetWorker.js](dotnet/wwwroot/dotnetWorker.js) file. Web Worker can perform heavy tasks without blocking the UI, however it does not have direct control over DOM and relies on communication with main thread for changes to UI. Communication between the Web Worker and the main thread occurs through message passing. The demo includes a few simple examples of passing information from dotnet to React frontend and the other way.
 
 From dotnet to react - exports ready.
 
