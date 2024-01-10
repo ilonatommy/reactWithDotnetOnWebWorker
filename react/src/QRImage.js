@@ -1,17 +1,16 @@
 // Licensed to the .NET Foundation under one or more agreements.
 // The .NET Foundation licenses this file to you under the MIT license.
 import React, { useEffect, useState } from 'react'
-import { runGenerate } from './index.js';
-import { getEventEmitter } from './index.js';
+import { eventEmitter } from './client';
+import { generate } from './client';
 
 export const QrImage = ({ text, size }) => {
   const [imageUrl, setImageUrl] = useState(null);
-  const eventEmitter = getEventEmitter();
 
   useEffect(() => {
     async function generateAsync() {
       if (text && size) {
-        await runGenerate(text, size);
+        await generate(text, size);
       }
     }
 
@@ -27,7 +26,7 @@ export const QrImage = ({ text, size }) => {
       }
     };
     eventEmitter.on('generateQRCodeResponse', qrHandler);
-  }, [eventEmitter]);
+  }, []);
 
   return (
     <div>

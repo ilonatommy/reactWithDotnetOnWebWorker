@@ -1,14 +1,13 @@
 // Licensed to the .NET Foundation under one or more agreements.
 // The .NET Foundation licenses this file to you under the MIT license.
 import React, { useState, useEffect } from 'react';
-import { getEventEmitter } from './index.js';
+import { eventEmitter } from './client';
 import './Popup.css';
 
 export const Popup = () => {
     const [isOpen, setIsOpen] = useState(false);
     const [popupMessage, setPopupMessage] = useState('');
-  
-    const eventEmitter = getEventEmitter();
+
     const togglePopup = () => {
       setIsOpen(!isOpen);
     };
@@ -23,7 +22,7 @@ export const Popup = () => {
             showPopup(message);
         };
         eventEmitter.on('errorOccurred', errorOccurredHandler);
-    }, [eventEmitter]);
+    }, []);
 
     return (
         <div className="popup-container">

@@ -1,11 +1,13 @@
 // Licensed to the .NET Foundation under one or more agreements.
 // The .NET Foundation licenses this file to you under the MIT license.
+import { EventEmitter } from './EventEmitter.js';
+
 let dotnetWorker = null;
 let exportsReady = false;
+export const eventEmitter = new EventEmitter();
 
-export async function setUpWorker() {
-    dotnetWorker = new Worker('./qr/wwwroot/dotnetWorker.js', { type: "module" } );
-
+export function setUpWorker() {
+    dotnetWorker = new Worker('../../qr/wwwroot/worker.js', { type: "module" } );
     dotnetWorker.addEventListener('message', function(e) {
         switch (e.data.command)
         {
@@ -46,20 +48,3 @@ export function generate(text, size) {
     }
     dotnetWorker.postMessage({ command: "generateQRCode", text: text, size: size });
 }
-
-class EventEmitter {
-    constructor() { this.events = {}; }
-  
-    on(eventName, callback) {
-      if (!this.events[eventName]) 
-        this.events[eventName] = [];
-      this.events[eventName].push(callback);
-    }
-  
-    emit(eventName, ...args) {
-      if (this.events[eventName])
-        this.events[eventName].forEach((callback) => callback(...args));
-    }
-}
-
-export const eventEmitter = new EventEmitter();

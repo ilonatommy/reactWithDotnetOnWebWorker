@@ -4,10 +4,9 @@ import React from 'react'
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
+import { setUpWorker, launchDotnet } from './client';
 
-const mainJsPath = '../../qr/wwwroot/main.js';
-const { setUpWorker, launchDotnet, generate, eventEmitter } = await import(/* webpackIgnore: true */mainJsPath);
-await setUpWorker();
+setUpWorker();
 launchDotnet();
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -16,11 +15,3 @@ root.render(
     <App />
   </React.StrictMode>
 );
-
-export function runGenerate(text, size) {
-  generate(text, size);
-}
-
-export function getEventEmitter() {
-  return eventEmitter;
-}

@@ -6,15 +6,14 @@ import { Popup } from './Popup.js';
 import debounce from 'lodash.debounce';
 import { QrImage } from './QRImage.js';
 import React from 'react';
-import { getEventEmitter } from './index.js';
 import { BarLoader } from 'react-spinners';
+import { eventEmitter } from './client.js';
 
 function App() {
   const initText = "Type text to generate QR";
   const initSize = 5;
   const [text, setText] = useState(initText);
   const [size, setSize] = useState(initSize);
-  const eventEmitter = getEventEmitter();
   const [exportsReady, setExportsReady] = useState(false);
   const debouncedSetText = debounce(e => setText(e.target.value), 100);
   const debouncedSetSize = debounce(e => setSize(e.target.value), 100);
@@ -24,7 +23,7 @@ function App() {
       setExportsReady(true);
     };
     eventEmitter.on('exportsReady', finishWaiting);
-  }, [eventEmitter]);
+  }, []);
 
   return (
     <div className="App">
