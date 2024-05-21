@@ -1,40 +1,29 @@
 // Licensed to the .NET Foundation under one or more agreements.
 // The .NET Foundation licenses this file to you under the MIT license.
-import React, { useState, useEffect } from 'react';
-import { eventEmitter } from './client';
+
+import React from 'react';
 import './Popup.css';
 
-export const Popup = () => {
-    const [isOpen, setIsOpen] = useState(false);
-    const [popupMessage, setPopupMessage] = useState('');
-
-    const togglePopup = () => {
-      setIsOpen(!isOpen);
+export const Popup = ({ isOpen, message, onClose }) => {
+    const handleClose = () => {
+      onClose();
     };
-
-    const showPopup = (message) => {
-        setPopupMessage(message);
-        setIsOpen(true);
-    };
-
-    useEffect(() => {
-        const errorOccurredHandler = (message) => {
-            showPopup(message);
-        };
-        eventEmitter.on('errorOccurred', errorOccurredHandler);
-    }, []);
-
+    if (!isOpen) {
+        return null;
+    }
     return (
         <div className="popup-container">
-            {isOpen && (
-                <div className="popup">
-                    <div className="popup-content">
-                        <h2>Error</h2>
-                        <p>{popupMessage}</p>
-                        <button onClick={togglePopup}>Close</button>
-                    </div>
+            <div className="popup">
+                <div className="popup-content">
+                    <h2>Error</h2>
+                    <p>{message}</p>
+                    <button onClick={handleClose}>Close</button>
                 </div>
-            )}
+            </div>
         </div>
     );
-}
+};
+
+export const PopupContext = React.createContext({
+    showPopup: () => {}
+  });
