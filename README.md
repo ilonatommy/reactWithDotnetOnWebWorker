@@ -4,13 +4,20 @@ Live demo: https://ashy-island-008420303.4.azurestaticapps.net/
 
 ## Setup
 
+Make sure to have `wasm-tools` workload installed:
+
+```bash
+cd dotnet
+dotnet workload restore
+```
+
 ### Linux
 
 Long version, from root:
 
 ``` bash
 # builds the dotnet project, creating build artifacts in dist/dotnet
-dotnet publish -c Debug ./dotnet/qr.csproj
+dotnet publish -c Debug ./dotnet/QRGenerator.csproj
 cd react
 # installs node packages:
 npm install
